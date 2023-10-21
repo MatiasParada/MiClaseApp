@@ -1,0 +1,57 @@
+@keyframes slideAnimation {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.slide-animation {
+  animation: slideAnimation 5s linear infinite;
+}
+ion-img {
+  max-width: 100px; /* Establecer el ancho máximo en 100 píxeles o el valor que desees */
+}
+
+
+
+ion-avatar {
+  overflow: hidden; /* Ocultar el contenido que se desborda */
+  width: 100px; /* Ancho deseado */
+  height: 100px; /* Altura deseada */
+  margin-left: 10px;
+}
+
+// ion-button {
+//   --background: #f4a404; /* Color amarillo mostaza para el fondo del botón */
+//   --color:  #042342; ; /* Color del texto del botón en azul marino */
+//   border-radius: 5px; /* Radio de borde para el botón */
+//   font-size: 16px; /* Tamaño de fuente para el botón */
+//   width: 85%;
+//   margin: auto;
+// }
+ion-card{
+  
+  top: 7%;
+  background-color: #16164a9b; // Color de fondo blanco para la tarjeta
+  border-radius: 10px; // Radio de borde para la tarjeta
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+
+}
+
+.background-image {
+  background: url('/assets/img/gente.png') no-repeat 100% 100%;
+}
+ion-content{
+  --background: #001f3f00; // Fondo en azul marino
+  background-image: url("/assets/img/gente.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}

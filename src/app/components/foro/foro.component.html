@@ -1,0 +1,66 @@
+
+
+
+  
+
+
+  <ion-card-content class="login ion-fade-in-up ion-animatable">
+        <h4>Ingresa tu publicación</h4>
+        <ion-input [(ngModel)]="publicacion.titulo" label="Título" labelPlacement="floating"></ion-input>
+        <ion-textarea [(ngModel)]="publicacion.contenido" label="Contenido" labelPlacement="floating"></ion-textarea>
+    
+        <ion-button (click)="limpiarPublicacion()">Limpiar</ion-button>
+        <ion-button (click)="guardarPublicacion()">Guardar</ion-button>
+  </ion-card-content>
+
+  <ion-card-content class="login ion-fade-in-up ion-animatable">
+    <h4>Publicaciones recientes<h4>
+
+    <ion-card *ngFor="let pub of publicaciones">
+        <h4>
+          #{{ pub.id }}: {{ pub.titulo }} <br>
+          Autor: {{ pub.nombre }} {{ pub.apellido }}
+        </h4>
+    <br>
+  
+      {{ pub.contenido }}
+
+      <ion-button (click)="editarPublicacion(pub)">
+        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="eliminarPublicacion(pub)">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+
+  <ion-card>
+  <ion-card-content class="login ion-fade-in-up ion-animatable">
+        <h4>Ingresa tu publicación</h4>
+        <ion-input [(ngModel)]="publicacion.titulo" label="Título" labelPlacement="floating"></ion-input>
+        <ion-textarea [(ngModel)]="publicacion.contenido" label="Contenido" labelPlacement="floating"></ion-textarea>
+    
+        <ion-button (click)="limpiarPublicacion()">Limpiar</ion-button>
+        <ion-button (click)="guardarPublicacion()">Guardar</ion-button>
+  </ion-card-content>
+
+  <ion-card-content class="login ion-fade-in-up ion-animatable">
+    <h4>Publicaciones recientes<h4>
+
+    <ion-card *ngFor="let pub of publicaciones">
+        <h4>
+          #{{ pub.id }}: {{ pub.titulo }} <br>
+          Autor: {{ pub.nombre }} {{ pub.apellido }}
+        </h4>
+    <br>
+  
+      {{ pub.contenido }}
+
+      <ion-button (click)="editarPublicacion(pub)">
+        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="eliminarPublicacion(pub)">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+
+  </ion-card>

@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    
+      <ion-img src="assets/img/Logo_DuocUC.svg.png" width="50" slot="start"></ion-img>
+    
+    <ion-title >
+      <h1 class="slide-animation">Sistema asistencia DUOCUC </h1>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      
+        <ion-img src="assets/img/Logo_DuocUC.svg.png" slot="start"></ion-img>
+      
+      <ion-title size="large" class="slide-animation">
+        <h1  class="slide-animation">Tu Título</h1>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-card>
+  
+  <ion-card-header>
+    <ion-card-title>Bienvenido(a) {{ usuario.nombre }} {{ usuario.apellido }} </ion-card-title>
+  </ion-card-header>
+
+
+  <ion-card-content>
+    <br>
+
+
+    <ion-toolbar>
+      <ion-segment [(ngModel)]="componente_actual" (ngModelChange)="cambiarComponente($event)">
+        <ion-segment-button value="qr">
+          <ion-label>QR</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="miclase">
+          <ion-label>Mi clase</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="foro">
+          <ion-label>Foro</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="misdatos">
+          <ion-label>Mis datos</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+
+    <app-qr [hidden]="componente_actual !== 'qr'" (qrCapturado)="cambiarComponente('miclase')"></app-qr>
+    <app-miclase [hidden]="componente_actual !== 'miclase'"></app-miclase>
+    <app-foro [hidden]="componente_actual !== 'foro'"></app-foro>
+    <app-misdatos [hidden]="componente_actual !== 'misdatos'"></app-misdatos>
+
+  
+
+  </ion-card-content>
+  <br><br><br><br>
+  <ion-footer>
+    <ion-toolbar>
+      <ion-button (click)="cerrarSesion()" expand="block" fill="clear" shape="round">
+        Cerrar sesión
+      </ion-button>
+    </ion-toolbar>
+  </ion-footer>
+  </ion-card>
+
+
+
+

@@ -1,0 +1,94 @@
+/* Estilos generales para toda la página */
+main{
+  background-color: #f4a404;
+}
+
+ion-content {
+  --background: #001f3f00; // Fondo en azul marino
+  background-image: url("/assets/img/gente.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  ion-title {
+    ion-label {
+      color: #fff; // Color de texto blanco para el título y subtítulo
+      text-align: center;
+      h1 {
+        font-size: 28px; // Tamaño de fuente para el título
+        margin-bottom: 5px; // Margen inferior para separar el título y el subtítulo
+      }
+      p {
+        font-size: 16px; // Tamaño de fuente para el subtítulo
+      }
+    }
+  }
+  ion-input {
+    border: 1px solid #ccc; /* Borde sólido */
+    border-radius: 50px; /* Radio de borde */
+    background-color:#0e325362;;
+    padding: 10px; /* Espaciado interior */
+    margin-bottom: 10px; 
+    --color: #ffffff;
+    
+  }
+  
+  .ion-padding-vertical {
+    ion-card {
+      background-color: #f6f6f7de; // Color de fondo blanco para la tarjeta
+      border-radius: 10px; // Radio de borde para la tarjeta
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Sombra suave para la tarjeta
+      ion-card-title {
+        ion-label {
+          color: #001f3f; // Color de texto azul marino para el título de la tarjeta
+          h2 {
+            font-size: 24px; // Tamaño de fuente para el título de la tarjeta
+          }
+        }
+      }
+      ion-card-content {
+        ion-img {
+          width: 100%; // Ancho completo para la imagen
+          max-width: 200px; // Ancho máximo para la imagen
+          margin: 0 auto 10px; // Centrar la imagen y agregar margen inferior
+          
+        }
+        
+        ion-row {
+          ion-col {
+            ion-button {
+              ion-button {
+                --background: #f4a404; /* Color amarillo mostaza para el fondo del botón */
+                --color:  #042342; ; /* Color del texto del botón en azul marino */
+                border-radius: 5px; /* Radio de borde para el botón */
+                font-size: 16px; /* Tamaño de fuente para el botón */
+                width: 86%;
+                margin: auto;
+                 
+              }
+            }
+          }
+        }
+      }
+      ion-label {
+        ion-button {
+          --background: #f4a404; /* Color amarillo mostaza para el fondo del botón */
+          --color:  #042342; ; /* Color del texto del botón en azul marino */
+          border-radius: 5px; /* Radio de borde para el botón */
+          font-size: 16px; /* Tamaño de fuente para el botón */
+          width: 86%;
+          margin: auto;
+           
+        }
+      }
+    }
+  }
+}
+ion-button {
+  --background: #f4a404; /* Color amarillo mostaza para el fondo del botón */
+  --color:  #042342; ; /* Color del texto del botón en azul marino */
+  border-radius: 5px; /* Radio de borde para el botón */
+  font-size: 16px; /* Tamaño de fuente para el botón */
+  width: 86%;
+  margin: auto;
+   
+}

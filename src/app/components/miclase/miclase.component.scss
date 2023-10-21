@@ -1,0 +1,53 @@
+@keyframes slideAnimation {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.slide-animation {
+  animation: slideAnimation 5s linear infinite;
+}
+ion-img {
+  max-width: 100px; /* Establecer el ancho máximo en 100 píxeles o el valor que desees */
+}
+
+
+
+ion-avatar {
+  overflow: hidden; /* Ocultar el contenido que se desborda */
+  width: 100px; /* Ancho deseado */
+  height: 100px; /* Altura deseada */
+}
+
+ion-button {
+  --background: #f4a404; /* Color amarillo mostaza para el fondo del botón */
+  --color: #020144; /* Color del texto del botón en azul marino */
+  border-radius: 5px; /* Radio de borde para el botón */
+  font-size: 16px; /* Tamaño de fuente para el botón */
+}
+
+
+#data {
+  padding-left: 30px; /* Ajusta el espacio entre filas */
+}
+ion-content{
+  --background: #001f3f00; // Fondo en azul marino
+  background-image: url("/assets/img/gente.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+table {
+  border-collapse: separate;
+  border-spacing: 0 10px; /* Ajusta la cantidad de espacio vertical entre las filas */
+}

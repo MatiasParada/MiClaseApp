@@ -1,0 +1,32 @@
+<ion-content>
+  <div class="ion-padding-vertical">
+    <ion-card class="ion-text-center ion-padding-vertical">
+      <ion-card-title class="ion-text-center">
+        <ion-label>
+          <h2>¡Bienvenido!</h2>
+        </ion-label>
+      </ion-card-title>
+      <ion-card-content>
+        <ion-img src="assets/img/Logo_DuocUC.svg.png"></ion-img>
+        <div>
+          <ion-label position="start">Correo</ion-label>
+          <ion-input type="text" [(ngModel)]="correo"></ion-input>
+        </div>
+        <div>
+          <ion-label position="start">Contraseña</ion-label>
+          <ion-input type="password" [(ngModel)]="password"></ion-input>
+        </div>
+        <ion-row>
+          <ion-col size="12">
+            <ion-button shape="block" (click)="ingresar()">Ingresar</ion-button>
+          </ion-col>
+        </ion-row>
+
+      </ion-card-content>
+      <ion-label>
+        <br>
+        <ion-router-link routerLink="/correo">¿Olvidaste tu contraseña?</ion-router-link>
+      </ion-label>
+    </ion-card>
+  </div>
+</ion-content>
