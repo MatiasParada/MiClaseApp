@@ -1,3 +1,7 @@
+ 
+
+
+ 
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -5,6 +9,10 @@ import { IonicModule } from '@ionic/angular';
 import { NavigationExtras, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
+import { Usuario } from 'src/app/model/usuario';
+import { Storage } from '@ionic/storage-angular';
+
+ 
 
 @Component({
   selector: 'app-pregunta',
@@ -15,18 +23,36 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class PreguntaPage implements OnInit {
 
-  nombre = 'Anna'
-  preguntaSecreta = '¿Cuál es tu animal favorito?'
-  respuestaSecreta = 'gato'
+ 
+  usuario = new Usuario();
+  nombre = '';
+  preguntaSecreta = '';
+  respuestaSecreta = '';
 
-  constructor(private router: Router, private alertController: AlertController, private authService: AuthService) { }
+
+
+
+
+  constructor(private router: Router,private storage: Storage, private alertController: AlertController, private authService: AuthService) { }
 
   ngOnInit() {
+    // Suscríbete al BehaviorSubject para obtener el usuario cuando esté disponible
+    this.authService.usuarioAutenticado.subscribe((usuario) => {
+      if (usuario) {
+        this.usuario = usuario;
+        this.nombre = usuario.nombre; 
+        this.preguntaSecreta = usuario.preguntaSecreta;
+      }
+    });
+ 
   }
 
   recuperarContrasena(){
     this.authService.verificacionRespuesta(this.respuestaSecreta);
+ 
 
+
+ 
   }
 
   volverAlInicio(){

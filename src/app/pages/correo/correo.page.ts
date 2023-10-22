@@ -15,17 +15,30 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class CorreoPage implements OnInit {
 
-  correo = 'atorres@duocuc.cl';
+ 
+
+ 
+  correo = '';
+ 
 
   constructor(private router: Router, private alertController: AlertController, private authService: AuthService) { }
 
   ngOnInit() {
   }
 
-  recuperarContrasena() {
-    this.authService.verificacionCorreo(this.correo);
+ 
+
+ 
+  async recuperarContrasena() {
+    const correoValido = await this.authService.verificacionCorreo(this.correo);
+
+    if (correoValido) {
+        this.router.navigate(['/pregunta']);
+    }
   }
 
+
+ 
   volverAlInicio() {
     this.router.navigate(['/ingreso']);
   }

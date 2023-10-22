@@ -49,6 +49,10 @@ export class DataBaseService {
   }
 
   async crearUsuariosDePrueba() {
+ 
+ 
+    await this.guardarUsuario(Usuario.getUsuario('admin', '1234', 'admin', '', 'pregunta secreta', 'gato', 'N'));
+ 
     await this.guardarUsuario(Usuario.getUsuario('atorres@duocuc.cl', '1234', 'Ana', 'Torres', 'Nombre de mi mascota', 'gato', 'N'));
     await this.guardarUsuario(Usuario.getUsuario('avalenzuela@duocuc.cl', 'qwer', 'Alberto', 'Valenzuela', 'Mi mejor amigo', 'juanito', 'N'));
     await this.guardarUsuario(Usuario.getUsuario('cfuentes@duocuc.cl', 'asdf', 'Carla', 'Fuentes', 'Dónde nació mamá', 'valparaiso', 'N'));
@@ -100,6 +104,17 @@ export class DataBaseService {
     return usuarios[0];
   }
 
+ 
+ 
+// Validar correo
+async validarCorreo(correo: string): Promise<Usuario | undefined> {
+  const usuarios: Usuario[] = (await this.db.query('SELECT * FROM USUARIO WHERE correo=?;', [correo])).values as Usuario[];
+  return usuarios[0];
+}
+
+  
+
+ 
   // Actualizar sesión activa
   async actualizarSesionActiva(correo: string, sesionActiva: string) {
     const sql = 'UPDATE USUARIO SET sesionActiva=? WHERE correo=?';

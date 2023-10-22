@@ -18,10 +18,16 @@
     <ion-card-content class="login ion-fade-in-up ion-animatable">
       <br>
       <ion-title>
+ 
         <h2>Paso 2:</h2>
         <h2>Responde la pregunta</h2>
         <ion-text class="ion-text-center"><h2>Usuario: {{ nombre }}</h2></ion-text>
         <ion-text class="ion-text-center"><h2>Usuario: {{preguntaSecreta}}</h2></ion-text> 
+ 
+        <ion-text class="ion-text-center"><h2>Usuario: {{ nombre }}</h2></ion-text>
+        <h2>Paso 2: Responde la siguiente pregunta</h2>
+        <ion-text class="ion-text-center"><h2>{{preguntaSecreta}}</h2></ion-text> 
+ 
       </ion-title>
       <ion-item class="ion-margin-top">
         <ion-input label="Ingrese Respuesta: " labelplacement="floating" [(ngModel)]="respuestaSecreta"></ion-input>

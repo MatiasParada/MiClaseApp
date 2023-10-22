@@ -7,6 +7,8 @@ import { Storage } from '@ionic/storage-angular';
 import { DataBaseService } from './data-base.service';
 
 
+
+
 @Injectable()
 
 export class AuthService {
@@ -75,23 +77,30 @@ export class AuthService {
     this.usuarioAutenticado.next(usuario);
   }
 
+  
   async verificacionCorreo(correo: string) {
-    // Verificar si el correo es válido
-    if (!this.isValidEmail(correo)) {
-      showToast('La dirección de correo electrónico no es válida');
-      return;
+    try {
+        // Verificar si el correo es válido
+        const usuario: Usuario | undefined = await this.isValidEmail(correo);
+        if (!usuario) {
+            showToast('La dirección de correo electrónico no es válida');
+            return false; // Retorna false si el correo no es válido
+        } else {
+            this.usuarioAutenticado.next(usuario);
+            return true; // Retorna true si el correo es válido
+        }
+    } catch (error) {
+        console.error('Error al verificar el correo:', error);
+        showToast('Ocurrió un error al verificar el correo');
+        return false; // Retorna false en caso de error
     }
-
-    // Redirige a la página de "pregunta"
-    this.router.navigate(['pregunta']);
   }
-
   // Función de verificación de correo electrónico
-  private isValidEmail(email: string): boolean {
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    return emailRegex.test(email);
+  private async isValidEmail(correo: string): Promise<Usuario | undefined> {
+    const usuario: Usuario | undefined = await this.bd.validarCorreo(correo);
+    return usuario;
   }
-
+  
 
   async verificacionRespuesta(respuestaSecreta: string) {
     // Verifica si la respuesta es correcta

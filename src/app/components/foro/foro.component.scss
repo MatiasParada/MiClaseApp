@@ -1,3 +1,4 @@
+ 
 .alinear-centro {
   text-align: center;
   padding-top: 8px;
@@ -70,6 +71,10 @@
   font-weight: bold; /* Hacer que el título sea negrita */
   color: #cc3a3a; /* Cambiar el color del texto del título */
   }
+ 
+
+
+ 
 
 .content-container {
   display: flex;
@@ -88,7 +93,11 @@ ion-card-content.login {
   background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
   padding: 50px;
   border-radius: 15px;
+ 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+ 
+  box-shadow: 0 0 10px rgba(115, 113, 113, 0.627);
+ 
 }
 
 ion-button {
@@ -133,6 +142,54 @@ h4 {
 }
 
 
+ 
+ 
+/* En tu archivo .scss o app.scss */
+.custom-card {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  position: relative;
+}
+
+.card-title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.author-info {
+  font-size: 0.8em;
+  color: #555;
+}
+
+.card-content {
+  margin-top: 10px;
+}
+
+.action-buttons ion-button {
+  margin-right: 8px;
+}
+
+.action-buttons ion-icon {
+  font-size: 1.2em;
+}
+
+.card-id {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #f4a404;
+  color: #fff;
+  font-size: 0.8em;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+
+ 
 
 
 

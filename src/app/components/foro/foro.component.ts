@@ -22,7 +22,50 @@ export class ForoComponent implements OnInit  {
 
   @ViewChild("topOfPage") topOfPage!: ElementRef;
 
+ 
 
+ 
+async mostrarAlerta() {
+    const alert = await this.alertController.create({
+      header: 'Nueva Publicación',
+      inputs: [
+        {
+          name: 'titulo',
+          type: 'text',
+          placeholder: 'Título'
+        },
+        {
+          name: 'contenido',
+          type: 'textarea',
+          placeholder: 'Contenido',
+          attributes: {
+            multiline: true,
+            rows: 5 
+          }
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Publicación cancelada');
+          }
+        },
+        {
+          text: 'Publicar',
+          handler: (data) => {
+            this.publicacion.titulo= data.titulo;
+            this.publicacion.contenido= data.contenido;
+            this.guardarPublicacion();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+ 
   
   usuario = new Usuario();
   publicacion: Publicacion = {
@@ -45,6 +88,14 @@ export class ForoComponent implements OnInit  {
     const usu = await this.authService.leerUsuarioAutenticado();
     this.usuario = usu!;
     this.limpiarPublicacion();
+ 
+ 
+    this.authService.usuarioAutenticado.subscribe((usuario) => {
+      if (usuario !== null) {
+        this.usuario = usuario!;
+      }
+    })
+ 
   }
 
   setPublicacion(id: string, correo: string, nombre: string, apellido: string, titulo: string, contenido: string) {
@@ -61,6 +112,7 @@ export class ForoComponent implements OnInit  {
     this.api.cargarPublicaciones();
   }
 
+ 
 
   public alertButtons = ['OK'];
   public alertInputs = [
@@ -72,6 +124,12 @@ export class ForoComponent implements OnInit  {
       type: 'textarea'
     },
   ];
+ 
+  esAutor(pub: Publicacion): boolean {
+    return this.usuario.correo === pub.correo;
+  }
+
+ 
   
 
   guardarPublicacion() {
