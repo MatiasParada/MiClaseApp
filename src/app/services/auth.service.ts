@@ -102,25 +102,8 @@ export class AuthService {
   }
   
 
-  async verificacionRespuesta(respuestaSecreta: string) {
-    // Verifica si la respuesta es correcta
-    if (this.esRespuestaCorrecta(respuestaSecreta)) {
-      // Redirige a la página "correcto"
-      this.router.navigate(['/correcto']);
-    } else {
-      // Redirige a la página "incorrecto"
-      this.router.navigate(['/incorrecto']);
-    }
-  }
+  
 
-  private esRespuestaCorrecta(respuestaSecreta: string): boolean {
-    // Implementa la lógica para verificar si la respuesta es correcta.
-    // Por ejemplo, puedes comparar la respuesta con una respuesta esperada.
-    const respuestaEsperada = "gato"; // Cambia esto a tu respuesta esperada
-  
-    // Devuelve true si la respuesta es correcta, de lo contrario, devuelve false
-    return respuestaSecreta === respuestaEsperada;
-  }
-  
+
   
 }

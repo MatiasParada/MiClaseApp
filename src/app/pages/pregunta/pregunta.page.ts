@@ -23,6 +23,7 @@ export class PreguntaPage implements OnInit {
   nombre = '';
   preguntaSecreta = '';
   respuestaSecreta = '';
+  correo = '';
 
   constructor(private router: Router,private storage: Storage, private alertController: AlertController, private authService: AuthService) { }
 
@@ -31,13 +32,21 @@ export class PreguntaPage implements OnInit {
     this.authService.usuarioAutenticado.subscribe((usuario) => {
       if (usuario) {
         this.usuario = usuario;
-        this.nombre = usuario.nombre; // Asigna el nombre del usuario
+        this.nombre = usuario.nombre;
+        this.preguntaSecreta = usuario.preguntaSecreta;
+        this.correo = usuario.correo;
+        
       }
     });
   }
 
   recuperarContrasena(){
-    this.authService.verificacionRespuesta(this.respuestaSecreta);
+    if (this.respuestaSecreta==this.usuario.respuestaSecreta){
+      alert('correcto')
+
+    }else{
+    alert(this.usuario.respuestaSecreta)
+    }
   }
 
   volverAlInicio(){
