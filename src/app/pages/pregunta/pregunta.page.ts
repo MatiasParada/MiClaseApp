@@ -1,7 +1,4 @@
- 
 
-
- 
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,8 +8,7 @@ import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { Usuario } from 'src/app/model/usuario';
 import { Storage } from '@ionic/storage-angular';
-
- 
+import { SQLiteDBConnection } from '@capacitor-community/sqlite';
 
 @Component({
   selector: 'app-pregunta',
@@ -23,15 +19,10 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class PreguntaPage implements OnInit {
 
- 
   usuario = new Usuario();
   nombre = '';
   preguntaSecreta = '';
   respuestaSecreta = '';
-
-
-
-
 
   constructor(private router: Router,private storage: Storage, private alertController: AlertController, private authService: AuthService) { }
 
@@ -40,19 +31,13 @@ export class PreguntaPage implements OnInit {
     this.authService.usuarioAutenticado.subscribe((usuario) => {
       if (usuario) {
         this.usuario = usuario;
-        this.nombre = usuario.nombre; 
-        this.preguntaSecreta = usuario.preguntaSecreta;
+        this.nombre = usuario.nombre; // Asigna el nombre del usuario
       }
     });
- 
   }
 
   recuperarContrasena(){
     this.authService.verificacionRespuesta(this.respuestaSecreta);
- 
-
-
- 
   }
 
   volverAlInicio(){
