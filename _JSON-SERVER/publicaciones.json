@@ -127,6 +127,14 @@
       "apellido": "",
       "titulo": "holaa esto es una nueva publicaion",
       "contenido": "casi me hecho todo el codigo haciendo un\n 'git pull --rebase origin main'"
+    },
+    {
+      "id": 17,
+      "correo": "avalenzuela@duocuc.cl",
+      "nombre": "Alberto",
+      "apellido": "Valenzuela",
+      "titulo": "hollaaa ",
+      "contenido": "chao"
     }
   ]
 }

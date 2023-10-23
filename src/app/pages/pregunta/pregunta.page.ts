@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router, NavigationExtras,RouterModule } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { Usuario } from 'src/app/model/usuario';
 import { Storage } from '@ionic/storage-angular';
+import { Subject } from 'rxjs';
 import { SQLiteDBConnection } from '@capacitor-community/sqlite';
 
 @Component({
@@ -15,14 +16,17 @@ import { SQLiteDBConnection } from '@capacitor-community/sqlite';
   templateUrl: './pregunta.page.html',
   styleUrls: ['./pregunta.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule,RouterModule]
 })
 export class PreguntaPage implements OnInit {
+
+  password = new Subject<string>();
 
   usuario = new Usuario();
   nombre = '';
   preguntaSecreta = '';
   respuestaSecreta = '';
+  correo = '';
 
   constructor(private router: Router,private storage: Storage, private alertController: AlertController, private authService: AuthService) { }
 
@@ -31,17 +35,23 @@ export class PreguntaPage implements OnInit {
     this.authService.usuarioAutenticado.subscribe((usuario) => {
       if (usuario) {
         this.usuario = usuario;
-        this.nombre = usuario.nombre; // Asigna el nombre del usuario
+        this.nombre = usuario.nombre;
+        this.preguntaSecreta = usuario.preguntaSecreta;
+        this.correo = usuario.correo;
+        
       }
     });
   }
 
   recuperarContrasena(){
-    this.authService.verificacionRespuesta(this.respuestaSecreta);
+    if (this.respuestaSecreta==this.usuario.respuestaSecreta){
+      this.router.navigate(['/correcto']);
+      this.authService.transmitirContraseña(this.usuario.password);
+    }else{
+      this.router.navigate(['/incorrecto']);
+    }
   }
 
-  volverAlInicio(){
-    this.router.navigate(['/ingreso']);
-  }
+
 
 }
