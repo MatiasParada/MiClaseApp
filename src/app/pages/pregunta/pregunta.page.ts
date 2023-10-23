@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router, NavigationExtras,RouterModule } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { Usuario } from 'src/app/model/usuario';
@@ -15,7 +15,7 @@ import { SQLiteDBConnection } from '@capacitor-community/sqlite';
   templateUrl: './pregunta.page.html',
   styleUrls: ['./pregunta.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule,RouterModule]
 })
 export class PreguntaPage implements OnInit {
 
@@ -42,15 +42,12 @@ export class PreguntaPage implements OnInit {
 
   recuperarContrasena(){
     if (this.respuestaSecreta==this.usuario.respuestaSecreta){
-      alert('correcto')
-
+      this.router.navigate(['/correcto']);
     }else{
-    alert(this.usuario.respuestaSecreta)
+      this.router.navigate(['/incorrecto']);
     }
   }
 
-  volverAlInicio(){
-    this.router.navigate(['/ingreso']);
-  }
+
 
 }
