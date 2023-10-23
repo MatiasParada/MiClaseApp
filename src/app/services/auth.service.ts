@@ -16,7 +16,12 @@ export class AuthService {
   keyUsuario = 'USUARIO_AUTENTICADO';
   usuarioAutenticado = new BehaviorSubject<Usuario | null>(null);
 
+  
   constructor(private router: Router, private bd: DataBaseService, private storage: Storage) { }
+  private contraseñaSubject = new BehaviorSubject<string>('');
+
+  contraseña$ = this.contraseñaSubject.asObservable();
+
 
   inicializarAutenticacion() {
     this.storage.create();
@@ -69,7 +74,7 @@ export class AuthService {
   async leerUsuarioAutenticado(): Promise<Usuario | undefined> {
     const usuario = await this.storage.get(this.keyUsuario).then(usuario => usuario as Usuario);
     this.usuarioAutenticado.next(usuario);
-    return usuario;
+    return usuario; 
   }
 
   setUsuarioAutenticado(usuario: Usuario) {
@@ -99,6 +104,11 @@ export class AuthService {
   private async isValidEmail(correo: string): Promise<Usuario | undefined> {
     const usuario: Usuario | undefined = await this.bd.validarCorreo(correo);
     return usuario;
+  }
+
+// funcion donde envia a contraseña a la page correcto
+  transmitirContraseña(contraseña: string) {
+    this.contraseñaSubject.next(contraseña);
   }
   
 

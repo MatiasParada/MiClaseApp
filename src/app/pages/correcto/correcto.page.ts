@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 
+
 @Component({
   selector: 'app-correcto',
   templateUrl: 'correcto.page.html',
@@ -15,11 +16,14 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class CorrectoPage implements OnInit {
 
+  password :  string = '';
   constructor(private router: Router, private alertController: AlertController, private authService: AuthService) { }
-
+  
 
   ngOnInit() {
-
+    this.authService.contraseña$.subscribe(contraseña => {
+      this.password = contraseña;
+    });
   }
 
   login(){

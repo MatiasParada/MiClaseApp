@@ -8,6 +8,7 @@ import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { Usuario } from 'src/app/model/usuario';
 import { Storage } from '@ionic/storage-angular';
+import { Subject } from 'rxjs';
 import { SQLiteDBConnection } from '@capacitor-community/sqlite';
 
 @Component({
@@ -18,6 +19,8 @@ import { SQLiteDBConnection } from '@capacitor-community/sqlite';
   imports: [IonicModule, CommonModule, FormsModule,RouterModule]
 })
 export class PreguntaPage implements OnInit {
+
+  password = new Subject<string>();
 
   usuario = new Usuario();
   nombre = '';
@@ -43,6 +46,7 @@ export class PreguntaPage implements OnInit {
   recuperarContrasena(){
     if (this.respuestaSecreta==this.usuario.respuestaSecreta){
       this.router.navigate(['/correcto']);
+      this.authService.transmitirContraseña(this.usuario.password);
     }else{
       this.router.navigate(['/incorrecto']);
     }
